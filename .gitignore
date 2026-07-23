@@ -22,3 +22,4 @@ Thumbs.db
 
 #large file
 data/raw/
+data/predictions/
