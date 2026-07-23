@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 import os
 
-
 # Page Config
 st.set_page_config(
     page_title="FraudGuard AI",
@@ -11,7 +10,6 @@ st.set_page_config(
     layout="wide"
 )
 HISTORY_FILE = "data/predictions/predictions.csv"
-
 
 def save_prediction(data):
 
@@ -22,7 +20,6 @@ def save_prediction(data):
 
     df = pd.DataFrame([data])
 
-
     if os.path.exists(HISTORY_FILE):
 
         old_df = pd.read_csv(HISTORY_FILE)
@@ -31,7 +28,6 @@ def save_prediction(data):
             [old_df, df],
             ignore_index=True
         )
-
 
     df.to_csv(
         HISTORY_FILE,
@@ -60,7 +56,6 @@ FastAPI
 """
 )
 
-
 # Main Title
 
 st.title("💳 Credit Card Fraud Detection")
@@ -68,7 +63,6 @@ st.title("💳 Credit Card Fraud Detection")
 st.write(
 "AI powered system to identify suspicious transactions."
 )
-
 
 # Transaction Details
 
@@ -115,7 +109,6 @@ if st.button("📌 Load Sample Transaction"):
 
 col1, col2 = st.columns(2)
 
-
 with col1:
 
     time = st.number_input(
@@ -126,7 +119,6 @@ with col1:
     ).get("Time",0.0)
 )
 
-
 with col2:
 
     amount = st.number_input(
@@ -136,7 +128,6 @@ with col2:
         {}
     ).get("Amount",100.0)
 )
-
 
 # Advanced Features
 
@@ -179,14 +170,12 @@ if st.button("🔍 Analyze Transaction"):
 
     }
 
-
     try:
 
         response = requests.post(
             "http://127.0.0.1:8000/predict",
             json=payload
         )
-
 
         if response.status_code == 200:
 
@@ -197,7 +186,6 @@ if st.button("🔍 Analyze Transaction"):
             st.error("Prediction failed")
             st.stop()
 
-
     except Exception:
 
         st.error(
@@ -206,47 +194,34 @@ if st.button("🔍 Analyze Transaction"):
 
         st.stop()
 
-
-
     st.divider()
 
-
     probability = result["fraud_probability"]
-
 
     # Risk calculation
 
     if probability < 0.3:
-
         risk = "Low Risk"
 
     elif probability < 0.7:
-
         risk = "Medium Risk"
 
     else:
-
         risk = "High Risk"
-
-
 
     # Prediction Result
 
     if result["prediction"] == "Fraud":
-
         st.error(
             "🚨 Fraud Transaction Detected"
         )
 
     else:
-
         st.success(
             "✅ Genuine Transaction"
         )
 
-
     col1, col2 = st.columns(2)
-
 
     with col1:
 

@@ -9,7 +9,6 @@ app = FastAPI(
     version="1.0"
 )
 
-
 # Request Body
 class Transaction(BaseModel):
     Time: float
@@ -49,7 +48,6 @@ def home():
     return {
         "message": "Credit Card Fraud Detection API is Running"
     }
-
 
 @app.post("/predict")
 def predict(data: Transaction):
