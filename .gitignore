@@ -18,3 +18,7 @@ data/predictions/
 # OS files
 .DS_Store
 Thumbs.db
+
+
+#large file
+data/raw/
