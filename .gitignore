@@ -1,3 +1,7 @@
+# Dataset and generated files
+data/raw/
+data/predictions/
+
 # Virtual Environment
 venv/
 .env
@@ -20,6 +24,4 @@ data/predictions/
 Thumbs.db
 
 
-# Dataset and generated files
-data/raw/
-data/predictions/
+
