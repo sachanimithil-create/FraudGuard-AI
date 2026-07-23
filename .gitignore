@@ -20,6 +20,6 @@ data/predictions/
 Thumbs.db
 
 
-#large file
+# Dataset and generated files
 data/raw/
 data/predictions/
